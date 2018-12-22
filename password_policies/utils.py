@@ -3,8 +3,8 @@ from datetime import timedelta
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 
-from password_policies.conf import settings
-from password_policies.models import PasswordHistory
+from .conf import settings
+from .models import PasswordHistory
 
 
 class PasswordCheck(object):

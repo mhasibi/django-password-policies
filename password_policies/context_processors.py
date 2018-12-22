@@ -1,5 +1,4 @@
-from password_policies.models import PasswordHistory
-
+from .models import PasswordHistory
 
 def password_status(request):
     """

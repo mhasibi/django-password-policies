@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
+from django.db import models
 from password_policies.conf import settings
 from password_policies.managers import PasswordHistoryManager
 
@@ -19,7 +19,9 @@ Has the following fields:
                                 verbose_name=_('user'),
                                 help_text=_('The user who needs to change '
                                             'his/her password.'),
-                                related_name='password_change_required')
+                                related_name='password_change_required',
+                                on_delete= models.deletion.PROTECT
+                                )
 
     class Meta:
         get_latest_by = 'created'
@@ -43,7 +45,8 @@ Has the following fields:
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('user'),
                              help_text=_('The user this password history '
                                          'entry belongs to.'),
-                             related_name='password_history_entries')
+                             related_name='password_history_entries',
+                             on_delete=models.deletion.PROTECT)
 
     objects = PasswordHistoryManager()
 

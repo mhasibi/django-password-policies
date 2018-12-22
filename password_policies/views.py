@@ -2,7 +2,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.core import signing
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.shortcuts import resolve_url
 from django.utils.decorators import method_decorator
 from django.utils.encoding import force_text
@@ -14,10 +14,10 @@ from django.views.generic.edit import FormView
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from password_policies.conf import settings
-from password_policies.forms import PasswordPoliciesForm
-from password_policies.forms import PasswordPoliciesChangeForm
-from password_policies.forms import PasswordResetForm
+from .conf import settings
+from .forms import PasswordPoliciesForm
+from .forms import PasswordPoliciesChangeForm
+from .forms import PasswordResetForm
 
 
 class LoggedOutMixin(View):

@@ -1,13 +1,13 @@
 import re
 from datetime import timedelta
-from django.core.urlresolvers import resolve, reverse, NoReverseMatch, \
-    Resolver404
+from django.urls.base import resolve, reverse
+from django.urls.exceptions import NoReverseMatch, Resolver404
 from django.http import HttpResponseRedirect
 from django.utils import timezone
 
-from password_policies.conf import settings
-from password_policies.models import PasswordChangeRequired, PasswordHistory
-from password_policies.utils import PasswordCheck
+from .conf import settings
+from .models import PasswordChangeRequired, PasswordHistory
+from .utils import PasswordCheck
 
 
 class PasswordChangeMiddleware(object):
@@ -97,7 +97,7 @@ To use this middleware you need to add it to the
             request.session[self.required] = False
 
     def _is_excluded_path(self, actual_path):
-        paths = settings.PASSWORD_CHANGE_MIDDLEWARE_EXCLUDED_PATHS[:]
+        paths = settings.PASSWORD_CHANGE_MIDDLEWARE_EXCLUDED_PATHS
         path = r'^%s$' % self.url
         paths.append(path)
         media_url = settings.MEDIA_URL

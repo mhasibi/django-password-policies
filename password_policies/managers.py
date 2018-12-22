@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.contrib.auth.hashers import identify_hasher
 from django.core.exceptions import ObjectDoesNotExist
 
-from password_policies.conf import settings
+from .conf import settings
 
 
 class PasswordHistoryManager(models.Manager):
